@@ -9,7 +9,7 @@ try:
     from EngineSequoia.Engine import InferenceEngine as InferenceEngineSequoia
 except ModuleNotFoundError:
     pass
-from specdec import utils
+from model.specexec.specdec import utils
 from tqdm import tqdm
 
 
