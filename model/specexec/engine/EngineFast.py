@@ -16,7 +16,7 @@ import transformers
 from .Llama_KV import KV_Cache
 from .Llama_model import LlamaForCausalLM_FI, LlamaForCausalLM_TG
 
-from specdec import utils
+from model.specexec.specdec import utils
 
 if "logger" not in globals():
     logger = utils.get_logger()
