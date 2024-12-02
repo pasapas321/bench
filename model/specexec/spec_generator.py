@@ -85,16 +85,16 @@ def create_spec_generator(
     #logger.info(f"Loading Model 0: `{model_name_0}`, {draft_engine_class=}")
     if draft_engine_class.lower() in ("es", "static", "enginestatic"):
         model_0 = transformers.AutoModelForCausalLM.from_pretrained(model_name_0, device_map=device, torch_dtype=torch.float16, revision=rev_0)
-        draft_engine = engine.EngineStatic(model_0, max_len=args.tree_max_len)
+        draft_engine = model.specexec.engine.EngineStatic(model_0, max_len=args.tree_max_len)
     # elif draft_engine_class.lower() in ("esc", "staticcompiled", "enginestaticcompiled"):
     #     model_0 = transformers.AutoModelForCausalLM.from_pretrained(model_name_0, device_map=device, torch_dtype=torch.float16, revision=rev_0)
-    #     draft_engine = engine.EngineStaticCompiled(model_0, max_len=args.tree_max_len)
+    #     draft_engine = model.specexec.engine.EngineStaticCompiled(model_0, max_len=args.tree_max_len)
     # elif draft_engine_class.lower() in ("ie", "inferenceengine"):
-    #     draft_engine = engine.InferenceEngine(model_name_0, max_len=args.tree_max_len)
+    #     draft_engine = model.specexec.engine.InferenceEngine(model_name_0, max_len=args.tree_max_len)
     elif draft_engine_class.lower() in ("padded", "inferenceenginepadded"):
-        draft_engine = engine.InferenceEnginePadded(model_name_0, max_len=args.tree_max_len)
+        draft_engine = model.specexec.engine.InferenceEnginePadded(model_name_0, max_len=args.tree_max_len)
     elif draft_engine_class.lower() in ("er", "regular", "engineregular"):
-        draft_engine = engine.EngineRegular(model_name_0, max_len=args.tree_max_len)
+        draft_engine = model.specexec.engine.EngineRegular(model_name_0, max_len=args.tree_max_len)
     else:
         raise ValueError(f"Unsupported engine class: {draft_engine_class} !")
 
@@ -126,7 +126,7 @@ def create_spec_generator(
                     #logger.warning("Failed to set `exllama_set_max_input_length`")
 
     # target_engine = EngineStatic(model_1, max_len=args.tree_max_len)
-    target_engine = engine.EngineRegular(model_1, max_len=args.tree_max_len)
+    target_engine = model.specexec.engine.EngineRegular(model_1, max_len=args.tree_max_len)
 
     if gen_type.lower() in ("sx_base", "base", "sx2", "spec_exec_base", "specexecbase"):
         spec_generator = SpecExecBase(draft_engine, target_engine, tokenizer)
