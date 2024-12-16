@@ -30,7 +30,7 @@ class SpecExecBase(SpecBase):
             self.draft_engine.set_max_len(draft_max_len)
 
         self.target_engine.set_max_len(target_max_len)
-        logger.info(f"Max_len reset: {draft_max_len=}, {target_max_len=}")
+        # logger.info(f"Max_len reset: {draft_max_len=}, {target_max_len=}")
 
     @torch.inference_mode()
     def grow_tree(self, max_budget, max_beam_len, max_n_beams=32, max_branch_width=16, min_log_prob=-10, decay_factor=0.95, **kwargs):
@@ -101,7 +101,7 @@ class SpecExecBase(SpecBase):
         logger.debug(
             f"tree layer sizes: {torch.unique(self.tree.positions[self.tree.prefix_len:], return_counts=True)[1].tolist()}"
         )  # Tree nodes counts by level
-        logger.info(f"{stats}")
+        # logger.info(f"{stats}")
 
         return stats
 
@@ -127,7 +127,7 @@ class SpecExecBase(SpecBase):
         cache_position = torch.where(input_token_map_bool)[0]
         amask_target = self.tree.amask[:, :, cache_position, : self.target_engine.max_len]  # clipping to target max_len
         position_ids = self.tree.positions[input_token_map_bool].unsqueeze(0)
-        logger.info(f"VAL {input_ids.shape=}, {amask_target.shape=}, {self.target_engine.kv_len_used=}, {self.tree.prefix_len=}, {self.tree.end=}")
+        # logger.info(f"VAL {input_ids.shape=}, {amask_target.shape=}, {self.target_engine.kv_len_used=}, {self.tree.prefix_len=}, {self.tree.end=}")
 
         target_logits = self.target_engine.forward(
             input_ids=input_ids,
