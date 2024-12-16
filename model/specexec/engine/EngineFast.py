@@ -318,7 +318,7 @@ class InferenceEnginePadded(GraphInferenceEngine):
         self.decoding_seqlens.sort()
         with utils.Timing(synchronize=True) as t:
             self.initialize_cuda_graph(self.decoding_seqlens)
-        logger.info(f"InferenceEnginePadded graph init complete in {t.elapsed:.3f} sec.")
+        # logger.info(f"InferenceEnginePadded graph init complete in {t.elapsed:.3f} sec.")
 
     @torch.inference_mode()
     def forward(
