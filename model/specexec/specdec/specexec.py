@@ -120,7 +120,7 @@ class SpecExecBase(SpecBase):
             input_token_map_bool[: self.tree.prefix_len] = True
 
         if self.tree.end > self.target_engine.max_len:
-            logger.info(f"target_engine max_len expands from {self.target_engine.set_max_len} to {self.tree.end}")
+            # logger.info(f"target_engine max_len expands from {self.target_engine.set_max_len} to {self.tree.end}")
             self.target_engine.set_max_len(self.tree.end)
 
         input_ids = self.tree.tokens[input_token_map_bool].unsqueeze(0)
