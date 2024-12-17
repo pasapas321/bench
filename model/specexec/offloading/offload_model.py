@@ -18,9 +18,9 @@ from tqdm.auto import trange
 from transformers.modeling_utils import _load_state_dict_into_meta_model
 from transformers.utils.quantization_config import GPTQConfig
 
-from offloading.model_loader import Loader
-from offloading.offload_engine import OffoadingCache
-from offloading.storage_wrapper import ModuleWithStorage
+from model.specexec.offloading.model_loader import Loader
+from model.specexec.offloading.offload_engine import OffoadingCache
+from model.specexec.offloading.storage_wrapper import ModuleWithStorage
 
 from specdec import utils
 
