@@ -22,7 +22,7 @@ from model.specexec.offloading.model_loader import Loader
 from model.specexec.offloading.offload_engine import OffoadingCache
 from model.specexec.offloading.storage_wrapper import ModuleWithStorage
 
-from specdec import utils
+from model.specexec.specdec import utils
 
 if "logger" not in globals():
     logger = utils.get_logger()
