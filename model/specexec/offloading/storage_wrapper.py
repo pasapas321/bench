@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from itertools import chain
 
-from specdec import utils
+from model.specexec.specdec import utils
 
 if "logger" not in globals():
     logger = utils.get_logger()
