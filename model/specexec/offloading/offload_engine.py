@@ -6,9 +6,9 @@ from typing import Any, Callable, Deque, Dict, Iterator, Optional, Tuple
 
 import torch
 
-from offloading.storage_wrapper import ModuleWithStorage
+from model.specexec.offloading.storage_wrapper import ModuleWithStorage
 
-from specdec import utils
+from model.specexec.specdec import utils
 if "logger" not in globals():
     logger = utils.get_logger()
 
