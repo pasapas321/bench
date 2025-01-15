@@ -13,7 +13,7 @@ import torch
 import transformers
 from tqdm.auto import tqdm
 
-# from model.specexec.offloading.offload_model import load_gptq_offloaded_model, load_offloaded_model
+from model.specexec.offloading.offload_model import load_gptq_offloaded_model, load_offloaded_model
 from model.specexec.specdec import SpecExecBeams, SpecExecBase, SpecInfer, utils
 import model.specexec.engine
 from model.specexec.specdec.utils import colored
